@@ -38,7 +38,9 @@
 │   ├──  pages
 |   |     ├── 404.tsx
 |   |     ├── Home.tsx
-|   |     └── Login.tsx
+|   |     └── auth
+|   |           |── login
+|   |           └── register
 │   ├── utils
 |   |     ├── constants
 |   |     ├── helpers

@@ -53,15 +53,3 @@
 ├── vite.config.ts
 └── README.md
 ```
-
-## Recommendation
-
-Generally we have a few rules the response has to follow:
-
--   Keys should always be returned as camelCase.
--   Code splitting
--   Use Types, not interfaces
--   Add comments for new function or complement them
--   We try to use as few libraries as possible
--   If your code repites twice or more then use this function like helper
--   We try not to use css files, use dynamic styles or style.module.css

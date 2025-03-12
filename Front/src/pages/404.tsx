@@ -9,7 +9,7 @@ export default function NotFound() {
     return (
         <VStack alignItems="center" justifyContent="center" height="100vh">
             <Image
-                src="https://static.tildacdn.com/tild3863-3337-4635-b366-333961366534/logo.svg"
+                src="https://otvet.imgsmail.ru/download/264916046_536e16e42836cbad2eae961f4159e115_800.png"
                 alt="Logo"
                 height="30vh"
                 width="30vh"

@@ -6,6 +6,7 @@ class UserController {
     async registration(req, res) {
         // const { companyId } = req.user
         const { email, password, confirm, name, ...userData } = req.body
+
         if (!email || !password) {
             return res.status(400).json({ message: 'Incorrect email or password' })
         }
@@ -34,7 +35,6 @@ class UserController {
 
         // Check if both email and password are provided
         if (!email || !password) {
-            // return next(ApiError.NotAllowed(`Please provide email and password`))
             return res.status(405).json({ message: 'Please provide email and password' })
         }
 
@@ -63,7 +63,7 @@ class UserController {
 
         // Check if the provided password is correct
         if (!(await user.correctPassword(password, user.password)) || !user) {
-            return next(ApiError.NotAllowed(`Incorrect email or password`))
+            return res.status(405).json({ message: 'Incorrect email or password' })
         }
 
         // Create an object with the user's relevant information

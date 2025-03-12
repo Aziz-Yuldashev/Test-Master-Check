@@ -1,9 +1,10 @@
-.login {
+.register {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #e6e6e6;
+    background-color: #202020;
+    color: #fff;
 }
 
 .form {
@@ -11,16 +12,16 @@
     max-width: 95%;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    background-color: #fff;
+    gap: 1.5rem;
+    background-color: #202020;
     border-radius: 10px;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .form > legend {
-    font-size: 1.25rem;
+    font-size: 2rem;
     text-align: center;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .form > fieldset {

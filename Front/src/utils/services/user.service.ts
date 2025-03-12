@@ -1,17 +1,17 @@
 import { UserTypes } from '../types/user.types'
 import $host from './axios'
 
-export const fetchUsers = async () => {
-    const { data } = await $host.get('user')
-    return data as UserTypes[]
+export const createUser = async (formData: UserTypes) => {
+    const { data } = await $host.post('user', JSON.stringify(formData), {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+
+    return data
 }
 
-export const createUser = async (data: UserTypes) => {
-    const response = await $host.post('user', data)
-    return response
-}
-
-export const updateUser = async (id: string, data: UserTypes) => {
-    const response = await $host.patch(`user/${id}`, data)
-    return response
+export const loginUser = async (email: string, password: string) => {
+    const { data } = await $host.post('user/login', { email, password })
+    return data
 }

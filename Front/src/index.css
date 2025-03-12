@@ -1,0 +1,11 @@
+:root {
+    --green: #00bf63;
+    --red: #ff66c4;
+    --blue: rgb(51 110 194);
+    --yellow: rgb(234 182 62);
+    --deep-blue: #0e2253;
+}
+
+* {
+    box-sizing: border-box;
+}

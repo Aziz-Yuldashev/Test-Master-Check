@@ -4,7 +4,6 @@ import jwt from 'jsonwebtoken'
 
 class UserController {
     async registration(req, res) {
-        // const { companyId } = req.user
         const { email, password, confirm, name, ...userData } = req.body
 
         if (!email || !password) {
@@ -30,26 +29,21 @@ class UserController {
     }
 
     async login(req, res, next) {
-        // Get the email and password from the request body
         const { email, password } = req.body
 
-        // Check if both email and password are provided
         if (!email || !password) {
             return res.status(405).json({ message: 'Please provide email and password' })
         }
 
-        // Find the user with the provided email
         const user = await UsersModel.findOne({
             where: { email: email },
             attributes: ['id', 'email', 'password', 'name', 'surname'],
         })
 
-        // If no user is found, throw an error
         if (!user) {
             return next(ApiError.NotAllowed(`User is not found`))
         }
 
-        // Generate a token for the user
         const token = jwt.sign(
             {
                 id: user.id,
@@ -61,12 +55,10 @@ class UserController {
             { expiresIn: process.env.JWT_EXPIRES_IN },
         )
 
-        // Check if the provided password is correct
         if (!(await user.correctPassword(password, user.password)) || !user) {
             return res.status(405).json({ message: 'Incorrect email or password' })
         }
 
-        // Create an object with the user's relevant information
         const loggedInUser = {
             id: user.id,
             email: user.email,
@@ -74,7 +66,6 @@ class UserController {
             surname: user.surname,
         }
 
-        // Send a success response with the token and the user's information
         res.status(200).json({
             status: 'success',
             token: token,

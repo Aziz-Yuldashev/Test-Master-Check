@@ -5,10 +5,12 @@ import cors from 'cors'
 import bodyParser from 'body-parser'
 import sequelize from './config/db.config.js'
 import './models/index.js'
+
 config()
 const app = express()
 
 app.use(cors())
+app.use(express.static('public'))
 app.use(bodyParser.json())
 app.use('/api', router)
 

@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  db:
+    image: mysql
+    container_name: db
+    restart: always
+    environment:
+      - MYSQL_DATABASE=masterCheck
+      - MYSQL_PASSWORD=bm806bm806
+      - MYSQL_ROOT_PASSWORD=bm806bm806
+    ports:
+      - 3306:3306
+
+  api:
+    build: .
+    depends_on:
+      - db
+    container_name: api
+    environment:
+      - DB_HOST=db
+      - DB_NAME=masterCheck
+      - DB_PASSWORD=bm806bm806
+      - DB_PORT=3306
+      - DB_USER=root
+      - JWT_EXPIRES_IN=7d
+      - PORT=5000
+      - SECRET_KEY=arystanDev123
+    ports:
+      - 5000:5000
+    volumes:
+      - ./Back:/app/Back
+      - /app/Back/node_modules
+      - /app/Front/node_modules
+    command: bash -c "./wait-for-it.sh db:3306 -- npm start"

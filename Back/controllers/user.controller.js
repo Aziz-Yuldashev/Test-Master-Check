@@ -72,6 +72,12 @@ class UserController {
             user: loggedInUser,
         })
     }
+
+    async getUser(req, res) {
+        const data = await UsersModel.findAll()
+
+        return res.status(200).json({ data, message: 'Success' })
+    }
 }
 
 export default new UserController()

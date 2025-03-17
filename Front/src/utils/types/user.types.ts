@@ -7,4 +7,9 @@ export type UserTypes = {
     confirm: string
 }
 
+export type DataUseres = {
+    data: UserTypes[]
+    message: string
+}
+
 export type createUserType = Omit<UserTypes, '_id'>
